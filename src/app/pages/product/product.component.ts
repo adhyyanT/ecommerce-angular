@@ -13,6 +13,7 @@ export class ProductComponent implements OnInit {
   productId: number = 0;
   productDetails?: IProduct;
   addedTocart = false;
+  isLoading = true;
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
@@ -24,10 +25,12 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.productService
       .getSingleProduct(this.productId)
       .subscribe((product) => {
         this.productDetails = product;
+        this.isLoading = false;
       });
   }
 

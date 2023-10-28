@@ -1,4 +1,7 @@
-<div class="grid grid-cols-5 min-h-screen">
+<div *ngIf="isLoading" class="flex justify-center w-screen min-h-screen">
+  <span class="loading loading-ring loading-lg"></span>
+</div>
+<div *ngIf="!isLoading" class="grid grid-cols-5 min-h-screen">
   <div class="col-span-2 flex items-center justify-center h-full">
     <img
       class="place-content-center h-96 w-96"

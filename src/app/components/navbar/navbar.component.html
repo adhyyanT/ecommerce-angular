@@ -1,0 +1,37 @@
+<div class="navbar bg-base-200 sticky top-0 z-50">
+  <div class="flex-1 gap-[4vw]">
+    <a class="btn btn-ghost normal-case text-xl" routerLink="home"
+      >E-Commerce</a
+    >
+    <div>
+      <div *ngIf="isLoggedIn">
+        <form [formGroup]="searchForm" (ngSubmit)="handleSubmit()">
+          <input
+            type="text"
+            placeholder="Search"
+            class="input input-bordered w-full max-w-xs"
+            name="search"
+            id="search"
+            formControlName="search"
+          />
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="flex-none">
+    <div *ngIf="isLoggedIn">
+      <ul class="menu menu-horizontal px-1">
+        <li><a routerLink="checkout">Cart</a></li>
+        <li>
+          <details>
+            <summary>Settings</summary>
+            <ul class="p-2 bg-base-100">
+              <li><a (click)="handleLogout()">Logout</a></li>
+              <!-- <li><a>Orders</a></li> -->
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

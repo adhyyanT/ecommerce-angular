@@ -1,0 +1,38 @@
+<form
+  class="flex justify-center w-full h-screen"
+  [formGroup]="loginForm"
+  (ngSubmit)="handleSubmit()"
+>
+  <div class="flex flex-col gap-3 pt-[8vh]">
+    <div class="flex justify-center gap-4">
+      <input
+        name="email"
+        type="email"
+        placeholder="Email"
+        formControlName="email"
+        class="input input-bordered w-full max-w-xs"
+        [class.input-error]="
+          loginForm.controls['email'].invalid &&
+          loginForm.controls['email'].touched
+        "
+      />
+    </div>
+    <div class="flex justify-center gap-4">
+      <input
+        name="password"
+        type="password"
+        formControlName="password"
+        placeholder="Password"
+        class="input input-bordered w-full max-w-xs"
+        [class.input-error]="
+          loginForm.controls['password'].invalid &&
+          loginForm.controls['password'].touched
+        "
+      />
+    </div>
+    <div *ngIf="!isSuccess" class="text-red-600 flex justify-center">
+      <small>Invalid Credentials </small>
+    </div>
+    <button class="btn">Login</button>
+  </div>
+</form>

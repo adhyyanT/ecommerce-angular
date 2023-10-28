@@ -1,0 +1,31 @@
+<div class="overflow-x-auto min-h-screen">
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Product Name</th>
+        <th>Count</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="hover" *ngFor="let item of cart | keyvalue; let i = index">
+        <th>{{ i + 1 }}</th>
+        <td>{{ item.value.product.title }}</td>
+        <td>{{ item.value.count }}</td>
+        <td>{{ item.value.product.price }}</td>
+        <td>
+          <button (click)="handleRemoveFromCart(item.value.product.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>Price: {{ total }}</th>
+      </tr>
+    </tbody>
+  </table>
+</div>

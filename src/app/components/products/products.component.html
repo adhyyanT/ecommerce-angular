@@ -1,0 +1,37 @@
+<!-- {{ isLoading }} -->
+<div *ngIf="isLoading" class="flex justify-center w-screen min-h-screen">
+  <span class="loading loading-ring loading-lg"></span>
+</div>
+<!-- <ng-template #not_loading> -->
+<div
+  *ngIf="!isLoading"
+  class="grid grid-cols-1 md:grid-cols-3 2xl:grid-cols-4 mt-[4vh]"
+>
+  <div class="flex justify-center my-8" *ngFor="let product of products">
+    <div
+      class="card w-96 bg-base-100 shadow-xl"
+      [routerLink]="'/product/' + product.id"
+    >
+      <figure>
+        <img
+          [src]="product.image"
+          [alt]="product.title"
+          class="object-scale-down h-96 w-96"
+        />
+      </figure>
+      <div class="card-body">
+        <h2 class="card-title">{{ product.title }}</h2>
+        <p class="h-24 overflow-hidden">{{ product.description }}</p>
+        <div class="card-actions justify-end">
+          <button
+            class="btn btn-primary"
+            [routerLink]="'/product/' + product.id"
+          >
+            Buy Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- </ng-template> -->

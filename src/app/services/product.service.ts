@@ -8,28 +8,13 @@ const productUrl = 'https://fakestoreapi.com/products';
   providedIn: 'root',
 })
 export class ProductService {
-  allProducts = new Subject<IProduct[]>();
-
-  constructor(private client: HttpClient) {
-    this.fetchProducts();
-  }
-  // searchProduct(search: string) {
-  //   const foundItems: IProduct[] = [];
-  //   this.allProducts.getValue().map((products) => {
-  //     if (products.category.includes(search)) foundItems.push(products);
-  //   });
-  //   return foundItems;
-  // }
-  fetchProducts() {
-    this.client.get<IProduct[]>(productUrl).subscribe((products) => {
-      this.allProducts.next(products);
-    });
-  }
+  constructor(private client: HttpClient) {}
   getSingleProduct(id: number) {
     return this.client.get<IProduct>('https://fakestoreapi.com/products/' + id);
   }
 
   getAllProducts() {
-    return this.allProducts;
+    // return this.allProducts;
+    return this.client.get<IProduct[]>(productUrl);
   }
 }

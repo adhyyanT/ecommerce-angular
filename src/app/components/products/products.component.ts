@@ -30,7 +30,7 @@ export class ProductsComponent implements OnInit {
       this.products = products;
       this.isLoading = false;
       console.log(this.isLoading);
-      // this.changeDetectorRef.detectChanges();
+      this.changeDetectorRef.detectChanges();
     });
   }
 }
